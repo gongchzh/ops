@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="/css/default.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script>
+$(function(){
+var data=window.parent.getData();
+var html='<form id="form1" action="'+data["url"]+'">'+
+'<table class="formtable" style="width:580px;">'+
+'<tbody>'
+for(i=0;i<data["readonly"].length;i++){
+	html=html+'<tr><td class="tlabel">'+data["readonly"][i][2]+
+	'：</td><td><input type="text" style="border:none;" readonly="readonly" class="forminput inputstyle1" id="'+
+	data["readonly"][i][0]+'" name="'+data["readonly"][i][0]+'"   value="'+data["readonly"][i][1]+'"></td></tr>'
+}
+for(i=0;i<data["input"].length;i++){
+		html=html+'<tr><td class="tlabel">'+data["input"][i][2]+'：</td><td><input type="text" class="forminput inputstyle1" id="'
+		+data["input"][i][0]+'" name="'+data["input"][i][0]+'" value="'+data["input"][i][1]+'"></td></tr>'
+}
+for(i=0;i<data["password"].length;i++){
+		html=html+'<tr><td class="tlabel">'+data["password"][i][2]+'：</td><td><input type="password" class="forminput inputstyle1" id="'
+		+data["password"][i][0]+'" name="'+data["password"][i][0]+'" value="'+data["password"][i][1]+'"></td></tr>'
+}
+for(i=0;i<data["radio"].length;i++){
+	html=html+'<tr><td class="tlabel">'+data["radio"][i][2]+'：</td><td>'
+	if(data["radio"][i][1]==data["radio"][i][3]){
+		html=html+'<input type="radio"  checked name="'+
+		data["radio"][i][0]+'" value="'+data["radio"][i][3]+'">'+data["radio"][i][3]+
+		'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+
+		'<input type="radio"  name="'+
+		data["radio"][i][0]+'" value="'+data["radio"][i][4]+'"> ' +data["radio"][i][4]+' </td></tr>'
+	}else{
+		html=html+'<input type="radio"  name="'+
+		data["radio"][i][0]+'" value="'+data["radio"][i][3]+'">'+data["radio"][i][3]+
+		'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+
+		'<input type="radio"  checked  name="'+
+		data["radio"][i][0]+'" value="'+data["radio"][i][4]+'">'+data["radio"][i][4]+'</td></tr>'
+	}
+}
+
+html=html+' </tbody></table>'
+html=html+'<div class="formbtn"><input type="button" value="'+data["btn"]+'" onclick="submit1()"  class="btnsave">'
+html=html+'<input type="button" value="取消"  onclick="close1()" class="btncancel"></div></form>'
+$("#body1").append(html);
+})
+</script>
+<script>
+function submit1(){
+var data=window.parent.getRows();
+var urlf=$("#form1").attr("action")
+alert_ajax1(urlf,'form1')
+}
+</script>
+<script>
+function close1(){
+	window.parent.layer.close(window.parent.index);
+}
+</script>
+</head>
+<body id="body1" style="overflow:hidden; padding:10px;">
+</body>
+</html>

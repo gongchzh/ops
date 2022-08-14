@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+<link href="/css/button.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+
+<link href="/css/jqgrid/custom/ui.jqgrid.css" rel="stylesheet" type="text/css">
+
+<link href="/css/jqgrid/custom/jquery-ui.theme.css" rel="stylesheet"  />
+<script src="/js/jqgridn/jquery.js"></script>
+<script src="/js/jqgridn/grid.base.js"></script>
+<script src="/js/jqgridn/grid.locale-cn.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="/js/plt_set_nginx.js"></script>
+
+<script>
+var index=0;
+function add(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,510,"/v1/pop/plt/"+url2+"/set/nginx/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+function add(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,510,"/v1/pop/plt/"+url2+"/set/nginx/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+
+</script>
+
+<script>
+var index=0;
+function edit(){
+var forms=getRows()
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,550,"/v1/pop2/plt/"+url2+"/set/nginx/edit_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+var index=0;
+function del(){
+  var forms=getRows()
+//  url1=url.split("/v1/plt/")[1]
+//  url2=url1.split("/")[0]
+//  alert_ajax_data("/v1/plt"+url2+"/set/nginx/del")
+
+     alert_ajax_json("nginx/del",JSON.stringify(forms))
+ }
+</script>
+<script>
+var index=0;
+function clon(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,510,"/v1/pop3/plt/"+url2+"/set/nginx/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+function getData(){
+	var data={}
+//	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]   
+  	data["textarea"]=[]  
+    data["input"].push(["AppNginxName","","Ngx名"])
+    data["input"].push(["FunName","","应用功能名"])
+    data["input"].push(["NginxFile","","Ngx文件名"])
+    data["input"].push(["NginxFirstFile","","Ngx一服文件"])
+    data["input"].push(["NginxSecondFile","","Ngx二服文件"])
+    data["input"].push(["NginxFirstScript","","切一服脚本"])
+    data["input"].push(["NginxSecondScript","","切二服脚本"])
+    data["textarea"].push(["Member","","成员主机",4,64])
+	data["btn"]="确认"
+	data["url"]="add"
+    data["inputwidth"]=400
+	return data
+}
+</script>
+
+<script>
+function getData2(){
+	var data={}
+	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]    
+    data["textarea"]=[]  
+    data["readonly"].push(["AppNginxId",forms["AppNginxId"],"NgxID"])    
+    data["input"].push(["AppNginxName",forms["AppNginxName"],"Ngx名"])
+    data["input"].push(["FunName",forms["FunName"],"应用功能名"])
+    data["input"].push(["NginxFile",forms["NginxFile"],"Ngx文件名"])
+    data["input"].push(["NginxFirstFile",forms["NginxFirstFile"],"Ngx一服文件"])
+    data["input"].push(["NginxSecondFile",forms["NginxSecondFile"],"Ngx二服文件"])
+    data["input"].push(["NginxFirstScript",forms["NginxFirstScript"],"切一服脚本"])
+    data["input"].push(["NginxSecondScript",forms["NginxSecondScript"],"切二服脚本"])
+    data["textarea"].push(["Member",forms["Member"],"成员主机",4,64])
+	data["btn"]="确认"
+	data["url"]="edit"
+  
+    data["inputwidth"]=400
+	return data
+}
+</script>
+<script>
+function getData3(){
+	var data={}
+	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]        
+    data["textarea"]=[]  
+    data["input"].push(["AppNginxName",forms["AppNginxName"],"Ngx名"])
+    data["input"].push(["FunName",forms["FunName"],"应用功能名"])
+    data["input"].push(["NginxFile",forms["NginxFile"],"Ngx文件名"])
+    data["input"].push(["NginxFirstFile",forms["NginxFirstFile"],"Ngx一服文件"])
+    data["input"].push(["NginxSecondFile",forms["NginxSecondFile"],"Ngx二服文件"])
+    data["input"].push(["NginxFirstScript",forms["NginxFirstScript"],"切一服脚本"])
+    data["input"].push(["NginxSecondScript",forms["NginxSecondScript"],"切二服脚本"])
+    data["textarea"].push(["Member",forms["Member"],"成员主机",4,64])
+	data["btn"]="确认"
+	data["url"]="add"
+  
+    data["inputwidth"]=400
+	return data
+}
+</script>
+
+<title>游戏列表</title>
+	</head>
+	<body>
+		<!--  <table id="list2"></table> 
+		<div id="pager2"></div>
+		<br> -->
+		
+<ul class="toolbar">
+  <li><a href="#"  style="margin-left:10px"  id="add" onclick="add()" ><i class="toolico iconfont">&#xe61b;</i>添加</a></li>
+  <li><a href="#"  style="margin-left:10px"  id="edit" onclick="edit()" ><i class="toolico iconfont">&#xe61b;</i>编辑</a></li>
+    <li><a href="#"  style="margin-left:10px"  id="add" onclick="clon()" ><i class="toolico iconfont">&#xe61b;</i>克隆</a></li>
+  <li><a href="#"  style="margin-left:10px"  id="del" onclick="del()" ><i class="toolico iconfont">&#xe61b;</i>删除</a></li>
+<!--    <li><a href="#"  style="margin-left:10px"  id="switch" onclick="del_queue()" ><i class="toolico iconfont">&#xe61b;</i>删除队列</a></li>  -->
+</ul>
+
+<div class="wrapper" style="margin-top:10px">
+
+    <table id="list2"></table>
+    <div id="pager2"></div>
+</div>
+	</body>
+</html>

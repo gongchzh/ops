@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+<link href="/css/button.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+
+<link href="/css/jqgrid/custom/ui.jqgrid.css" rel="stylesheet" type="text/css">
+
+<link href="/css/jqgrid/custom/jquery-ui.theme.css" rel="stylesheet"  />
+<script src="/js/jqgridn/jquery.js"></script>
+<script src="/js/jqgridn/grid.base.js"></script>
+<script src="/js/jqgridn/grid.locale-cn.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="/js/plt_set_group.js"></script>
+<script>
+var index=0;
+function edit(){
+
+var forms=getRows()
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form(520,390,"/v1/pop/plt/"+url2+"/set/group/edit_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+var index=0;
+function add(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form(520,240,"/v1/pop2/plt/"+url2+"/set/group/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+
+<script>
+var index=0;
+function edit_fun(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form(600,320,"/v1/pop3/plt/"+url2+"/set/group/edit_fun_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+
+<script>
+var index=0;
+function edit_group(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form(600,310,"/v1/pop4/plt/"+url2+"/set/group/edit_group_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+
+
+
+<script>
+function getData2(){
+	var data={}
+//	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]
+    data["input"].push(["AppGroupName","","应用组名"])
+    data["radio"].push(["State","区域组","类型","区域组","跨区域组"])
+	data["btn"]="确认"
+	data["url"]="add"
+	return data
+}
+</script>
+<script>
+function getData3(){
+	var data={}
+    var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]
+    data["textarea"]=[]
+    data["readonly"].push(["AppGroupId",forms["AppGroupId"],"应用组ID"])
+    data["readonly"].push(["AppGroupName",forms["AppGroupName"],"应用组名"])
+	data["textarea"].push(["MemberFun",forms["MemberFun"],"成员应用功能",4,60])
+	data["btn"]="确认"
+	data["url"]="edit_fun"
+	return data
+}
+</script>
+
+<script>
+function getData4(){
+	var data={}
+    var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]
+    data["textarea"]=[]
+    data["readonly"].push(["AppGroupId",forms["AppGroupId"],"应用组ID"])
+    data["readonly"].push(["AppGroupName",forms["AppGroupName"],"应用组名"])
+	data["textarea"].push(["MemberGroup",forms["MemberGroup"],"成员应用组",3,60])
+  
+	data["btn"]="确认"
+	data["url"]="edit_group"
+	return data
+}
+</script>
+
+<script>
+function getData(){
+	var data={}
+	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]
+    data["readonly"].push(["AppGroupId",forms["AppGroupId"],"应用组ID"])
+    data["readonly"].push(["AppGroupName",forms["AppGroupName"],"应用组名"])
+    data["datetime"].push(["OpsEarlTime",forms["NewEarlTime"],"最早维护时间"])
+    data["datetime"].push(["OpsLateTime",forms["NewLateTime"],"最迟维护时间"])
+	data["btn"]="确认"
+	data["url"]="edit"
+	return data
+}
+</script>
+
+<title>游戏列表</title>
+	</head>
+	<body>
+		<!--  <table id="list2"></table> 
+		<div id="pager2"></div>
+		<br> -->
+		
+<ul class="toolbar">
+
+  <li><a href="#"  style="margin-left:10px"  id="update" onclick="edit()" ><i class="toolico iconfont">&#xe61b;</i>修改维护时间</a></li>
+    <li><a href="#"  style="margin-left:10px"  id="switch" onclick="add()" ><i class="toolico iconfont">&#xe61b;</i>添加应用组</a></li>  
+    <li><a href="#"  style="margin-left:10px"  id="switch" onclick="edit_fun()" ><i class="toolico iconfont">&#xe61b;</i>编辑成员应用功能</a></li>  
+     <li><a href="#"  style="margin-left:10px"  id="switch" onclick="edit_group()" ><i class="toolico iconfont">&#xe61b;</i>编辑成员应用组</a></li> 
+</ul>
+
+<div class="wrapper" style="margin-top:10px">
+
+    <table id="list2"></table>
+    <div id="pager2"></div>
+</div>
+	</body>
+</html>

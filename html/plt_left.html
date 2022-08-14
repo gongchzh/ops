@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>未更新游戏</title>
+<link href="/css/default.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+<style>
+html{overflow:hidden;}
+</style>
+</head>
+
+<body style="background:url(/images/line.gif) repeat-y 199px 0;">
+<div class="main">
+    <div class="left">
+        <ul class="leftmenu">
+		<li><a href="list" target="right" class="selected" ><i class="iconfont">&#xe600;</i>应用列表</a></li>
+        <li><a href="add_queue" target="right" ><i class="iconfont">&#xe610;</i>提交更新队列</a></li>
+		<li><a href="queue" target="right" ><i class="iconfont">&#xe610;</i>更新队列列表</a></li>
+    {{if eq .Audit 1}}
+        <li><a href="audit" target="right"><i class="iconfont">&#xe65b;</i>更新队列审核</a></li>
+        
+       
+        <li><a href="set/app" target="right"><i class="iconfont">&#xe65b;</i>应用配置</a></li>
+<!--     <li><a href="set/fun" target="right"><i class="iconfont">&#xe65b;</i>应用功能配置</a></li>   -->
+ 
+<li><a href="set/fun" target="right"><i class="iconfont">&#xe65b;</i>应用功能配置</a></li>
+        <li><a href="set/server" target="right"><i class="iconfont">&#xe65b;</i>应用服配置</a></li>
+        <li><a href="set/group" target="right"><i class="iconfont">&#xe65b;</i>应用组配置</a></li>
+         {{end}}
+      <li><a href="log" target="right"><i class="iconfont">&#xe65b;</i>应用日志</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/skin.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script>
+function pdt_game(pdt){
+	//alert(pdt);
+	window.parent.right.pdt_game(pdt);
+}
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="/css/default.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+</head>
+
+<!--  <body style="padding:15px 8px 0px 8px;">  -->
+<body >
+    <div class="website">
+        <form action="form" method="post" id="AddForm" enctype="multipart/form-data">
+     	<ul class="nform">
+	<li><span>应用功能名：</span><select name="FunId" id="FunId">
+			<option value=''></option>
+			{{range .Fun}}
+			<option value='{{.FunId}}'>{{.FunName}}</option>
+			{{end}}  
+			</select></li>
+<li><span>新MD5：</span><input type="text"  id="Md5" name="Md5"  class="forminput nforminput" ></li>
+<li><span>更新内容：</span><textarea class="formareasub"  id="Info" name="Info" rows="5" style="width:350px" ></textarea></li>
+<li style="margin-top:60px"><span>最早更新时间：</span><input type="datetime-local"  id="UpEarlTime" name="UpEarlTime"  class="forminput nforminput" value="{{.UpEarlTime}}" ></li>
+<li style="margin-top:60px"><span>最迟更新时间：</span><input type="datetime-local"  id="UpLateTime" name="UpLateTime"  class="forminput nforminput" value="{{.UpLateTime}}" ></li>
+<li style="margin-top:15px"><span>&nbsp;</span><a href="javascript:;" class="nextlink" onclick="add()">添加</a></li>
+     </ul>
+        </form>
+        
+    </div>
+
+</body>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/skin.js"></script>
+<script>
+function add(){
+	$("#AddForm").submit();
+}
+</script>
+<script>
+$("#GameName").change(function(){
+	var game=$(this).val()
+        	$.ajax({
+		type:"POST",
+		url:"get_type",
+		data:{"GameName":game},
+		success:function(ret){
+			$("#GameType").empty();
+			$("#GameType").append("<option></option>")
+			for(s=0;s<ret.length;s++){
+				$("#GameType").append("<option>"+ret[s]+"</option>")
+			}
+		}
+	});
+})
+</script>
+<script>
+$("#Pdt").change(function(){
+	var pdt=$(this).val()
+        	$.ajax({
+		type:"POST",
+		url:"get_host",
+		data:{"Pdt":pdt},
+		success:function(ret){
+			$("#Host0").empty();
+			$("#Host0").append("<option></option>")
+			for(s=0;s<ret.length;s++){
+				$("#Host0").append("<option>"+ret[s]["HostName"]+"</option>")
+			}
+         	$("#Host1").empty();
+			$("#Host1").append("<option></option>")
+			for(s=0;s<ret.length;s++){
+				$("#Host1").append("<option>"+ret[s]["HostName"]+"</option>")
+			}
+		}
+	});
+})
+</script>
+</html>

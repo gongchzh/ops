@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script>
+function sub_size(){
+	obj=frames['frame_index'];
+	obj.rows="51,*";
+    window.parent.right.reSizeList()
+}
+function add_size(){
+	obj=frames['frame_index'];
+	obj.rows="120,*";
+     window.parent.right.reSizeList()
+}
+</script>
+<frameset rows = "120,*" id='frame_index' frameborder=0 border=0>  
+<frame src = "/v1/plt/zygame" name="zygame" id="zygame" frameborder=0 border=0>  
+<frameset cols = "140,*" frameborder=0 border=0>  
+<frame src = "/v1/plt/zygame/list/left" id="left" name="left" scrolling="no"  frameborder = "0"  >  
+<frame src = "/v1/plt/zygame/list/list" id="right" name="right" frameborder = "0"  >  
+</frameset>
+</frameset>
+</html>

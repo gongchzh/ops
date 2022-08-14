@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+	<head>
+<link href="/css/button.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+
+<link href="/css/jqgrid/custom/ui.jqgrid.css" rel="stylesheet" type="text/css">
+
+<link href="/css/jqgrid/custom/jquery-ui.theme.css" rel="stylesheet"  />
+<script src="/js/jqgridn/jquery.js"></script>
+<script src="/js/jqgridn/grid.base.js"></script>
+<script src="/js/jqgridn/grid.locale-cn.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="/js/plt_set_app.js"></script>
+
+<script>
+var index=0;
+function add(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,750,"/v1/pop/plt/"+url2+"/set/app/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+var index=0;
+function edit(){
+
+var forms=getRows()
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,800,"/v1/pop2/plt/"+url2+"/set/app/edit_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+var index=0;
+function clon(){
+
+    var url=window.location.href
+    url1=url.split("/v1/plt/")[1]
+    url2=url1.split("/")[0]
+   if(url2!=""){
+        form2(600,750,"/v1/pop3/plt/"+url2+"/set/app/add_html");
+      }
+    
+//form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+function getData(){
+	var data={}
+//	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]    
+//    data["readonly"].push(["AppId","","应用ID"])
+    data["input"].push(["AppName","","应用名"])
+    data["input"].push(["FunName","","功能名"])
+    data["input"].push(["Port","","端口"])
+    data["input"].push(["PortCheckInvl","","端口检测间隔"])
+    data["input"].push(["AppTypeName","","类型"])
+    data["input"].push(["AppNginxName","","Nginx名"])
+    data["radio"].push(["NgxNum","第一","Nginx序号","第一","第二"])
+    data["input"].push(["BasePath","","主目录"])
+    data["input"].push(["BackDir","","备份目录"])
+    data["input"].push(["UpdatePath","","更新目录"])
+    data["input"].push(["UpdateProgram","","更新文件名"])
+    data["input"].push(["ProgramDir","","应用文件目录"])
+    data["input"].push(["AppProgram","","应用文件名"])
+    data["input"].push(["UpdateScriptPath","","更新脚本路径"])
+    data["input"].push(["RestartScriptPath","","重启脚本路径"])
+    data["short"]=15
+	data["btn"]="确认"
+	data["url"]="add"
+    data["inputwidth"]=400
+	return data
+}
+</script>
+
+<script>
+function getData2(){
+	var data={}
+	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]    
+    data["readonly"].push(["AppId",forms["AppId"],"应用ID"])
+    data["input"].push(["AppName",forms["AppName"],"应用名"])
+    data["input"].push(["FunName",forms["FunName"],"功能名"])
+    data["input"].push(["Port",forms["Port"],"端口"])
+    data["input"].push(["PortCheckInvl",forms["PortCheckInvl"],"端口检测间隔"])
+    data["radio"].push(["Status",forms["Status"],"状态","启用","禁用"])
+    data["input"].push(["AppTypeName",forms["AppTypeName"],"类型"])
+    data["input"].push(["AppNginxName",forms["AppNginxName"],"Nginx名"])
+    data["radio"].push(["NgxNum",forms["NgxNum"],"Nginx序号","第一","第二"])
+    data["input"].push(["BasePath",forms["BasePath"],"主目录"])
+    data["input"].push(["BackDir",forms["BackDir"],"备份目录"])
+    data["input"].push(["UpdatePath",forms["UpdatePath"],"更新目录"])
+    data["input"].push(["UpdateProgram",forms["UpdateProgram"],"更新文件名"])
+    data["input"].push(["ProgramDir",forms["ProgramDir"],"应用文件目录"])
+    data["input"].push(["AppProgram",forms["AppProgram"],"应用文件名"])
+    data["input"].push(["UpdateScriptPath",forms["UpdateScriptPath"],"更新脚本路径"])
+    data["input"].push(["RestartScriptPath",forms["RestartScriptPath"],"重启脚本路径"])
+    data["short"]=15
+	data["btn"]="确认"
+	data["url"]="edit"
+  
+    data["inputwidth"]=400
+	return data
+}
+</script>
+<script>
+function getData3(){
+	var data={}
+	var forms=getRows()
+	data["readonly"]=[]
+	data["input"]=[]
+    data["datetime"]=[]
+	data["radio"]=[]    
+    data["input"].push(["AppName",forms["AppName"],"应用名"])
+    data["input"].push(["FunName",forms["FunName"],"功能名"])
+    data["input"].push(["Port",forms["Port"],"端口"])
+    data["input"].push(["PortCheckInvl",forms["PortCheckInvl"],"端口检测间隔"])
+    data["radio"].push(["Status",forms["Status"],"状态","启用","禁用"])
+    data["input"].push(["AppTypeName",forms["AppTypeName"],"类型"])
+    data["input"].push(["AppNginxName",forms["AppNginxName"],"Nginx名"])
+    data["radio"].push(["NgxNum",forms["NgxNum"],"Nginx序号","第一","第二"])
+    data["input"].push(["BasePath",forms["BasePath"],"主目录"])
+    data["input"].push(["BackDir",forms["BackDir"],"备份目录"])
+    data["input"].push(["UpdatePath",forms["UpdatePath"],"更新目录"])
+    data["input"].push(["UpdateProgram",forms["UpdateProgram"],"更新文件名"])
+    data["input"].push(["ProgramDir",forms["ProgramDir"],"应用文件目录"])
+    data["input"].push(["AppProgram",forms["AppProgram"],"应用文件名"])
+    data["input"].push(["UpdateScriptPath",forms["UpdateScriptPath"],"更新脚本路径"])
+    data["input"].push(["RestartScriptPath",forms["RestartScriptPath"],"重启脚本路径"])
+    data["short"]=15
+	data["btn"]="确认"
+	data["url"]="add"
+  
+    data["inputwidth"]=400
+	return data
+}
+</script>
+
+<title>游戏列表</title>
+	</head>
+	<body>
+		<!--  <table id="list2"></table> 
+		<div id="pager2"></div>
+		<br> -->
+		
+<ul class="toolbar">
+  <li><a href="#"  style="margin-left:10px"  id="add" onclick="add()" ><i class="toolico iconfont">&#xe61b;</i>添加</a></li>
+  <li><a href="#"  style="margin-left:10px"  id="add" onclick="edit()" ><i class="toolico iconfont">&#xe61b;</i>编辑</a></li>
+    <li><a href="#"  style="margin-left:10px"  id="add" onclick="clon()" ><i class="toolico iconfont">&#xe61b;</i>克隆</a></li>
+  <li><a href="#"  style="margin-left:10px"  id="add" onclick="delete()" ><i class="toolico iconfont">&#xe61b;</i>删除</a></li>
+<!--    <li><a href="#"  style="margin-left:10px"  id="switch" onclick="del_queue()" ><i class="toolico iconfont">&#xe61b;</i>删除队列</a></li>  -->
+</ul>
+
+<div class="wrapper" style="margin-top:10px">
+
+    <table id="list2"></table>
+    <div id="pager2"></div>
+</div>
+	</body>
+</html>

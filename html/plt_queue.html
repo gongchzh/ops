@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+
+
+<link href="/css/button.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+
+<link href="/css/jqgrid/custom/ui.jqgrid.css" rel="stylesheet" type="text/css">
+
+<link href="/css/jqgrid/custom/jquery-ui.theme.css" rel="stylesheet"  />
+<script src="/js/jqgridn/jquery.js"></script>
+<script src="/js/jqgridn/grid.base.js"></script>
+<script src="/js/jqgridn/grid.locale-cn.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="/js/plt_queue.js"></script>
+<script>
+var index=0;
+function edit(){
+alert("start edit")
+var forms=getRows()
+alert(forms)
+form(600,300,"/v1/pop/host/edit_html");
+
+}
+</script>
+<script>
+function reload1(){
+	window.location.reload()
+}
+</script>
+<script>
+function pdt_game(pdt){
+    $("ul li a").removeClass("selected")
+	jQuery("#list2").jqGrid("setGridParam",{postData:  {"pdt":pdt}}) .trigger("reloadGrid",{fromServer: true});
+}
+</script>
+<script>
+var index=0;
+function update_single(){
+  alert("开始更新单服")
+  var infos=getMultiRows()   //获取多条记录信息
+  var data={}
+  data["QueueInfo"]=infos
+  data["AutoSwitch"]=false
+	
+//     alert(data["AutoSwitch"])
+    	$.ajax({
+			type:"POST",
+			url:"update_single",
+			data:JSON.stringify(data),
+			datatype:"json",
+              contentType:"application/json;charset=UTF-8",
+			success:function(ret){
+                    $('body').empty();
+                    $('body').append("<div style='font-size:20px'>"+ret+"</div>")
+			}
+	});
+  //alert_ajax_json("queue/update_single",JSON.stringify(data))
+}
+</script>
+<script>
+var index=0;
+function update_multi(){
+  var infos=getMultiRows()   //获取多条记录信息
+    var data={}
+    data["QueueInfo"]=infos
+    if (3==2){
+  var checkbox = document.getElementById('Auto')
+	if(checkbox.checked){
+		data["AutoSwitch"]=true
+	}else{
+		data["AutoSwitch"]=false
+	}}
+  data["AutoSwitch"]=false
+    	$.ajax({
+			type:"POST",
+			url:"update_multi",
+			data:JSON.stringify(data),
+			datatype:"json",
+              contentType:"application/json;charset=UTF-8",
+			success:function(ret){
+                    $('body').empty();
+                    $('body').append("<div style='font-size:20px'>"+ret+"</div>")
+			}
+	});
+ // alert_ajax_json("queue/update_multi",JSON.stringify(data))
+}
+</script>
+
+<title>游戏列表</title>
+	</head>
+	<body>
+		<!--  <table id="list2"></table> 
+		<div id="pager2"></div>
+		<br> -->
+		
+	<ul class="toolbar">
+	<li><a href="#"  style="margin-left:10px"  id="update" onclick="update_single()" ><i class="toolico iconfont">&#xe61b;</i>更新单服</a></li>
+     <li><a href="#"  style="margin-left:10px"  id="switch" onclick="update_multi()" ><i class="toolico iconfont">&#xe61b;</i>更新多服</a></li>
+ <!--   <li><label>自动切服</label><input type="checkbox"   name="Auto" id="Auto"  value="启用" ></li>   -->
+</ul>
+		 <div class="wrapper" style="margin-top:10px">
+
+    <table id="list2"></table>
+    <div id="pager2"></div>
+</div>
+	</body>
+</html>

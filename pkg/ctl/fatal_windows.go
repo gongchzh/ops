@@ -1,0 +1,3 @@
+package ctl
+
+func Fatal() {}

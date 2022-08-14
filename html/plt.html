@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>plt</title>
+<link href="/css/default.css" rel="stylesheet" type="text/css">
+<link href="/css/style/green.css" rel="stylesheet" type="text/css" id = 'link'>
+<style>
+html{overflow:hidden;}
+</style>
+
+
+</head>
+<body style="background:url(/images/line.gif) repeat-y 199px 0;">
+<div class="header">
+	<div class="headtop">
+        <span class="logo" id="logo"><img src="/images/logo.png"></span>       
+        <ul class="nav">
+        <li><a href="/v1/display">首页</a></li>
+         {{range .State.NormState}}
+          <li><a href="/v1/plt/{{.StateName}}" id="{{.StateName}}">{{.FullName}}</a></li>
+          {{end}}
+        </ul>
+        <div class="topright">
+	<div class="user">
+            <span><a href="#"><i class="userico iconfont">&#xe600;</i>Admin<i class="userdown iconfont">&#xe709;</i></a></span>
+            <ul class="userlist">
+            <li><a href="#"><i class="userxl iconfont">&#xe65b;</i>用户信息</a></li>
+            <li><a href="#" id="about"><i class="userxl iconfont">&#xe616;</i>修改密码</a></li>
+            <li><a href="login.html"><i class="userxl iconfont">&#xe601;</i>退出</a></li>
+            </ul>
+        </div>
+        <div class="skin">
+        	<a href="#">设置</a>
+            <ul class="skinlist">
+            <li><a href="#" data-value="green" class="targetElem green"></a></li>
+            <li><a href="#" data-value="darkblue" class="targetElem darkblue"></a></li>
+            <li><a href="#" data-value="orange" class="targetElem orange"></a></li>
+            <li><a href="#" data-value="lightgreen" class="targetElem lightgreen"></a></li>
+            <li><a href="#" data-value="black" class="targetElem black"></a></li>
+            <li><a href="#" data-value="darkgrey" class="targetElem darkgrey"></a></li>
+            <li><a href="#" data-value="lightblue" class="targetElem lightblue"></a></li>
+            <li><a href="#" data-value="red" class="targetElem red"></a></li>
+            </ul>        
+        </div>
+        </div>
+    </div>
+    <div class="headdown">
+    	<ul class="menu">
+
+          <li><a onclick="loadn('/v1/plt/{{.DftState}}/list/left','/v1/plt/{{.DftState}}/list/list')" ><i class="menuico iconfont">&#xe617;</i>列表</a></li>   
+          <li><a onclick="loadn('/v1/plt/{{.DftState}}/update/left','/v1/plt/{{.DftState}}/update/list')" ><i class="menuico iconfont">&#xe617;</i>更新</a></li>   
+          <li><a onclick="loadn('/v1/plt/{{.DftState}}/audit/left','/v1/plt/{{.DftState}}/audit/list')" ><i class="menuico iconfont">&#xe617;</i>审核</a></li>   
+          <li><a onclick="loadn('/v1/plt/{{.DftState}}/set/left','/v1/plt/{{.DftState}}/set/fun')" ><i class="menuico iconfont">&#xe617;</i>配置</a></li>   
+          <li><a onclick="loadn('/v1/plt/{{.DftState}}/list/left','/v1/plt/{{.DftState}}/list/list')" ><i class="menuico iconfont">&#xe617;</i>应用列表</a></li>   
+          
+        <li>
+
+  
+        </ul>
+      <span class="menuup"><a href="#" ><i class="mright iconfont">&#xe615;</i></a></span>
+	
+</div>
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/skin.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script>
+$(function(){
+  
+
+//$("#{{.DftState}}").
+//var checkbox = document.getElementById('{{.DftState}}')
+$("#{{.DftState}}").attr("class","selected")
+})
+</script>
+</html>

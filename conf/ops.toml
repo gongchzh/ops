@@ -1,0 +1,65 @@
+[Server]
+Listen="127.0.0.1"
+Port=443
+SSL=true
+IsLinux=false
+
+[Task]
+WaitUpdateAuto=false
+NoUpdateAuto=false
+Online=false
+DdosCheckPort=false
+TabRecv=false
+CheckDdosUsed=false
+HostLoadData=false
+ConfUpdate=true
+
+[Platform]
+Listen="127.0.0.1"
+Port=4433
+SSL=true
+IsLinux=false
+
+[Dep]
+SourceDir="d:/test/source/"
+DepDir="d:/test/deploy/"
+DelDir="d:/test/deploy/del_tmp/"
+DftState=1
+
+[App]
+Info="/home/app/info/app.json"
+DftScript="/home/app/shell/update_norm.py"
+GetInfo="/home/app/shell/OpsAgent --get-app-info"
+NginxUpDir="/usr/local/nginx/conf/upstream/"
+NginxInfo="/home/app/info/nginx.json"
+NginxGetInfo="/home/app/shell/OpsAgent --get-app-nginx-info"
+
+[Log]
+Path   = "log"
+Level  = "all"
+Stdout = false
+
+[Db]
+Host="192.168.0.191"
+Port=3306
+User="ops"
+Passwd="weqer"
+Db="ops"
+
+
+[[Gdb]]
+Host="192.168.0.101"
+Port=3308
+User="test1"
+Passwd="abcd"
+Db="test1"
+State=1
+StateName="test2"
+FullName="测试01"
+PortLike="12%"
+DftPdt=1
+LogHostId=99
+IsPre=false
+IsGame=true
+IsServerId=false
+	

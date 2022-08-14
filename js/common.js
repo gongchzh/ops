@@ -208,10 +208,9 @@ function form2(height,width,urlf){
 	index=index1;
 
 }
-//IE7下菜单背景BUG
-$(".menuson li a").css("width",$(".menuson").width());
 
-//隔行换色
+
+
 $('.simpletable tbody tr:even').addClass('even');
 
 
